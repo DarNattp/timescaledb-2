@@ -1,0 +1,30 @@
+version: '3'
+services:
+  nginx-1:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx-1_log:/var/log/nginx:cache
+      - ./defaut.conf:/etc/nginx/conf.d/default.conf:cache
+
+  telegraf:
+    image: telegraf:latest
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+      - ./nginx-1_log:/var/log/nginx
+      - ./log.out:/tmp/log.out
+    depends_on:
+      - nginx-1
+      # - timescaledb
+
+  timescaledb:
+    image: timescale/timescaledb:latest-pg15
+    environment:
+      - POSTGRES_PASSWORD=P@ssw0rd
+      - POSTGRES_USER=timescale
+      - POSTGRES_DB=timescaledb
+    ports:
+      - 5432:5432
+    volumes:
+      - ./timescaledb_data:/var/lib/postgresql/data
