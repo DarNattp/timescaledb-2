@@ -57,3 +57,14 @@ services:
       - 5432:5432
     volumes:
       - ./timescaledb_data:/var/lib/postgresql/data:cache
+
+#grafana
+  grafana:
+      container_name: grafana
+      image: grafana/grafana:latest
+      ports:
+        - 3000:3000
+      volumes:
+        - ./grafana/grafana_data:/var/lib/grafana
+      depends_on:
+        - timescaledb
