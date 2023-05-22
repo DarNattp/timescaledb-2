@@ -1,3 +1,5 @@
 ./nginx/nginx_log/*
 
 ./timescaledb_data/*
+
+./log.out
