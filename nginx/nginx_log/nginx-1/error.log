@@ -73,3 +73,4 @@
 2023/05/21 20:50:54 [notice] 1#1: start worker process 29
 2023/05/21 20:50:54 [notice] 1#1: start worker process 30
 2023/05/21 20:50:54 [notice] 1#1: start worker process 31
+2023/05/22 07:35:33 [error] 30#30: *10 open() "/usr/share/nginx/html/favicon.ico" failed (2: No such file or directory), client: 172.20.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
